@@ -123,6 +123,7 @@ async function start() {
         `instance:${process.pm2_env.NODE_APP_INSTANCE}`
       ];
 
+      dogstatsd.gauge('pm2.processes.status', process.pm2_env.status, tags);
       dogstatsd.gauge('pm2.processes.cpu', process.monit.cpu, tags);
       dogstatsd.gauge('pm2.processes.memory', process.monit.memory, tags);
     }
